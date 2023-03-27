@@ -1,0 +1,21 @@
+<div>
+    <h4>Form</h4>
+    <form [formGroup]="form" (ngSubmit)="submitFun()">
+        <label for="name">Name</label>
+        <div *ngIf='form.controls["name"].touched&&form.controls["name"].errors'>required</div>
+        <input formControlName="name" id="name" name="name">
+
+        <label for="message">Message</label>
+        <div *ngIf="form.controls['message'].touched&&form.controls['message'].errors?.['required']">required</div>
+        <div *ngIf="form.controls['message'].touched&&form.controls['message'].errors?.['required']">required</div>
+        <input formControlName="message" id="message" name="message">
+
+        <button type="submit">Sumbit</button>
+    </form>
+
+    <div *ngIf="this.form.valid">
+        <div>{{form.get('name')?.value}}</div>
+        <div>{{form.get('message')?.value}}</div>
+
+    </div>
+</div>
